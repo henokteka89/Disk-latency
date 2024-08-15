@@ -1,0 +1,21 @@
+1. Create the Performance Log
+
+Open Command Prompt with administrative privileges and run the following command to create a new performance log:
+
+Logman.exe create counter PerfLog-Long -o c:\perflogs\PerfLog-Long.blg -f bincirc -v mmddhhmm -max 250 -c \Cache\* \LogicalDisk(*)\* \Memory\* \Network Interface(*)\* \Paging File(*)\* \PhysicalDisk(*)\* \Processor(*)\* \Processor Information(*)\* \Process(*)\* \Redirector\* \Server\* \Server Work Queues\* \System\* -si 00:05:00
+ 
+2. Start the Performance Log:
+
+Run this command to start logging when the issue occurs:
+
+Logman.exe start PerfLog-Long
+
+Let the log capture data for 10 minutes while you reproduce the issue.
+
+3. Stop the Performance Log:
+
+After 10 minutes, stop the logging process with:
+
+Logman.exe stop PerfLog-Long
+
+  After completing these steps, please send us the generated file PerfLog-Long.blg located in C:\perflogs. This data will be crucial for analyzing the performance impact and finding a solution.
